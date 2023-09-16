@@ -29,7 +29,7 @@ function Body() {
     }
 
     return (
-        <div className="grid grid-cols-4 mx-16 justify-center items-start">
+        <div className="grid grid-cols-4 mx-16 justify-center items-start mb-16">
             <div className="col-span-3 grid grid-cols-3 justify-center items-start gap-y-6">
                 {course.map((course) => (
                     <Course
