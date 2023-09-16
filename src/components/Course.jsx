@@ -1,6 +1,6 @@
 function Course({ imageSrc, name, details, credit, price }) {
     return (
-        <div className="max-w-[280px] p-4">
+        <div className="max-w-[280px] p-4 rounded-md bg-white">
             <img
                 className="w-full"
                 // src="https://i.ibb.co/wLzMYTk/Rectangle-2-2.png"
