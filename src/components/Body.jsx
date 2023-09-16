@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Course from "./Course.jsx";
 import Cart from "./Cart.jsx";
 
@@ -17,8 +19,12 @@ function Body() {
     }, []);
 
     function addToCart(item, credit) {
-        setCart([...cart, item]);
-        setCredit(totalCredit + credit);
+        if (totalCredit + credit > 20) {
+            toast("Credit limit exceeded ! Only 20 credits allowed");
+        } else {
+            setCart([...cart, item]);
+            setCredit(totalCredit + credit);
+        }
         console.log(cart);
     }
 
@@ -33,12 +39,15 @@ function Body() {
                         credit={course.credit}
                         price={course.price}
                         clickHandler={() =>
-                            addToCart(course.course_name, course.credit)
+                            cart.includes(course.course_name)
+                                ? toast("Course already added")
+                                : addToCart(course.course_name, course.credit)
                         }
                     />
                 ))}
             </div>
             <Cart item={cart} totalCredit={totalCredit} />
+            <ToastContainer />
         </div>
     );
 }
