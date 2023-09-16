@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Main from "./components/Main.jsx";
+import Body from "./components/Body.jsx";
 import Header from "./components/Header.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
         <Header />
-        <Main />
+        <Body />
     </React.StrictMode>
 );
