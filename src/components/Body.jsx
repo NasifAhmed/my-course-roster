@@ -4,6 +4,9 @@ import Cart from "./Cart.jsx";
 
 function Body() {
     const [course, setCourse] = useState([]);
+    const [totalCredit, setCredit] = useState(0);
+    const [cart, setCart] = useState([]);
+
     useEffect(() => {
         fetch("course.json")
             .then((res) => res.json())
@@ -12,6 +15,12 @@ function Body() {
                 console.log(course);
             });
     }, []);
+
+    function addToCart(item, credit) {
+        setCart([...cart, item]);
+        setCredit(totalCredit + credit);
+        console.log(cart);
+    }
 
     return (
         <div className="grid grid-cols-4 mx-16 justify-center items-start">
@@ -23,10 +32,13 @@ function Body() {
                         details={course.details}
                         credit={course.credit}
                         price={course.price}
+                        clickHandler={() =>
+                            addToCart(course.course_name, course.credit)
+                        }
                     />
                 ))}
             </div>
-            <Cart />
+            <Cart item={cart} totalCredit={totalCredit} />
         </div>
     );
 }

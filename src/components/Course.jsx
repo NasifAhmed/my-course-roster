@@ -1,4 +1,4 @@
-function Course({ imageSrc, name, details, credit, price }) {
+function Course({ imageSrc, name, details, credit, price, clickHandler }) {
     return (
         <div className="max-w-[280px] p-4 rounded-md bg-white">
             <img
@@ -13,7 +13,10 @@ function Course({ imageSrc, name, details, credit, price }) {
                 <span>Price : {price}</span>
                 <span>Credit : {credit}</span>
             </div>
-            <button className="w-full rounded-lg bg-blue-600 text-white text-lg font-semibold py-1">
+            <button
+                className="w-full rounded-lg bg-blue-600 text-white text-lg font-semibold py-1"
+                onClick={clickHandler}
+            >
                 Select
             </button>
         </div>
